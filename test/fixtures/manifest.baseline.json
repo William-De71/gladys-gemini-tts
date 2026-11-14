@@ -1,0 +1,184 @@
+{
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "options": []
+    },
+    {
+      "key": "costs",
+      "type": "section",
+      "options": []
+    },
+    {
+      "key": "api_key",
+      "type": "secret",
+      "options": []
+    },
+    {
+      "key": "voice_section",
+      "type": "section",
+      "options": []
+    },
+    {
+      "key": "model",
+      "type": "select",
+      "options": ["gemini-3.8-flash-lite-tts", "gemini-3.8-flash-tts"]
+    },
+    {
+      "key": "voice",
+      "type": "select",
+      "options": [
+        "Zephyr",
+        "Puck",
+        "Charon",
+        "Kore",
+        "Fenrir",
+        "Leda",
+        "Orus",
+        "Aoede",
+        "Callirrhoe",
+        "Autonoe",
+        "Enceladus",
+        "Iapetus",
+        "Umbriel",
+        "Algieba",
+        "Despina",
+        "Erinome",
+        "Algenib",
+        "Rasalgethi",
+        "Laomedeia",
+        "Achernar",
+        "Alnilam",
+        "Schedar",
+        "Gacrux",
+        "Pulcherrima",
+        "Achird",
+        "Zubenelgenubi",
+        "Vindemiatrix",
+        "Sadachbia",
+        "Sadaltager",
+        "Sulafat"
+      ]
+    },
+    {
+      "key": "custom_voice",
+      "type": "string",
+      "options": []
+    },
+    {
+      "key": "style",
+      "type": "string",
+      "options": []
+    },
+    {
+      "key": "sample_rate",
+      "type": "select",
+      "options": ["24000", "16000"]
+    },
+    {
+      "key": "costs_section",
+      "type": "section",
+      "options": []
+    },
+    {
+      "key": "tier",
+      "type": "select",
+      "options": ["free", "paid"]
+    },
+    {
+      "key": "monthly_budget",
+      "type": "select",
+      "options": ["0", "0.5", "1", "2", "5", "10", "20", "50"]
+    }
+  ],
+  "actions": ["test_voice", "list_voices", "clear_cache"],
+  "widgets": [
+    {
+      "key": "usage",
+      "settings": []
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "error",
+      "fields": [
+        {
+          "key": "kind",
+          "options": [
+            "auth",
+            "disabled",
+            "billing",
+            "quota",
+            "rate_limit",
+            "model",
+            "voice",
+            "unreachable",
+            "timeout",
+            "server"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "kind",
+          "type": "string"
+        },
+        {
+          "key": "message",
+          "type": "string"
+        },
+        {
+          "key": "voice",
+          "type": "string"
+        },
+        {
+          "key": "language",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "key": "recovered",
+      "fields": [],
+      "variables": [
+        {
+          "key": "down_minutes",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "key": "monthly_limit",
+      "fields": [
+        {
+          "key": "level",
+          "options": ["warning", "reached"]
+        }
+      ],
+      "variables": [
+        {
+          "key": "level",
+          "type": "string"
+        },
+        {
+          "key": "used",
+          "type": "number"
+        },
+        {
+          "key": "limit",
+          "type": "number"
+        },
+        {
+          "key": "percent",
+          "type": "number"
+        },
+        {
+          "key": "month",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "scene_actions": []
+}

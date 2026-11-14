@@ -1,0 +1,10 @@
+Gladys Gemini TTS integration
+Copyright 2026 William-De71
+
+This product sends the texts Gladys speaks (scene notifications and the
+replies of the voice assistant) to the Gemini API
+(https://generativelanguage.googleapis.com), with the API key of the
+administrator, to turn them into speech.
+
+Gemini, Google AI Studio, Google and the Gemini logo are trademarks of Google
+LLC. This project is not affiliated with, endorsed or sponsored by Google.

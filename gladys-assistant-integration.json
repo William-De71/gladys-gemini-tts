@@ -1,0 +1,1219 @@
+{
+  "manifest_version": 1,
+  "type": "tts",
+  "name": "Gemini TTS",
+  "description": {
+    "en": "Give Gladys a Gemini voice: 30 voices, a speaking style, free tier or your own budget.",
+    "fr": "Donnez à Gladys une voix Gemini : 30 voix, une façon de parler, offre gratuite ou budget.",
+    "de": "Gib Gladys eine Gemini-Stimme: 30 Stimmen, eine Sprechweise, kostenlos oder mit Budget.",
+    "es": "Dé a Gladys una voz de Gemini: 30 voces, una forma de hablar, gratis o con presupuesto."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-gemini-tts:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["assistants"],
+  "keywords": [
+    "gemini",
+    "google",
+    "tts",
+    "text-to-speech",
+    "ai studio",
+    "synthèse vocale",
+    "voix",
+    "stimme",
+    "voz"
+  ],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-gemini-tts/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Getting started",
+        "fr": "Pour commencer",
+        "de": "Erste Schritte",
+        "es": "Para empezar"
+      },
+      "description": {
+        "en": "In Google AI Studio, sign in with a Google account, click “Get API key” and create a key, then paste it below. Then select this integration as the voice in Settings, Artificial Intelligence. Gemini detects the language of each text by itself.",
+        "fr": "Dans Google AI Studio, connectez-vous avec un compte Google, cliquez sur « Get API key » et créez une clé, puis collez-la ci-dessous. Choisissez ensuite cette intégration comme voix dans Paramètres, Intelligence artificielle. Gemini reconnaît seul la langue de chaque texte.",
+        "de": "Melde dich in Google AI Studio mit einem Google-Konto an, klicke auf „Get API key“, erstelle einen Schlüssel und füge ihn unten ein. Wähle diese Integration dann als Stimme unter Einstellungen, Künstliche Intelligenz. Gemini erkennt die Sprache jedes Textes selbst.",
+        "es": "En Google AI Studio, inicie sesión con una cuenta de Google, haga clic en «Get API key» y cree una clave, luego péguela abajo. Después elija esta integración como voz en Ajustes, Inteligencia artificial. Gemini reconoce solo el idioma de cada texto."
+      },
+      "links": [
+        {
+          "url": "https://aistudio.google.com/apikey",
+          "label": {
+            "en": "Get an API key",
+            "fr": "Obtenir une clé d’API",
+            "de": "API-Schlüssel holen",
+            "es": "Obtener una clave de API"
+          }
+        },
+        {
+          "url": "https://aistudio.google.com/generate-speech",
+          "label": {
+            "en": "Hear the voices",
+            "fr": "Écouter les voix",
+            "de": "Stimmen anhören",
+            "es": "Escuchar las voces"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-gemini-tts/blob/main/docs/en.md",
+          "label": {
+            "en": "Integration documentation",
+            "fr": "Documentation de l’intégration",
+            "de": "Dokumentation der Integration",
+            "es": "Documentación de la integración"
+          }
+        }
+      ]
+    },
+    {
+      "key": "costs",
+      "type": "section",
+      "label": {
+        "en": "Costs and privacy",
+        "fr": "Coûts et confidentialité",
+        "de": "Kosten und Datenschutz",
+        "es": "Costes y privacidad"
+      },
+      "description": {
+        "en": "Free tier: nothing to pay, a daily quota, and Google may use the texts to improve its products. Paid tier: billed per token, about $0.0015 (Flash-Lite) to $0.0023 (Flash) per 10 seconds of speech, double from 2027; the integration stops at the monthly budget below. A sentence already spoken is not asked again. Every text read aloud goes to Google.",
+        "fr": "Offre gratuite : rien à payer, un quota par jour, et Google peut utiliser les textes pour améliorer ses produits. Offre payante : facturée au jeton, environ 0,0015 $ (Flash-Lite) à 0,0023 $ (Flash) par 10 secondes de parole, le double à partir de 2027 ; l’intégration s’arrête au budget mensuel ci-dessous. Une phrase déjà prononcée n’est pas redemandée. Chaque texte lu part chez Google.",
+        "de": "Kostenlose Stufe: nichts zu zahlen, ein Tageskontingent, und Google darf die Texte zur Verbesserung seiner Produkte nutzen. Kostenpflichtige Stufe: Abrechnung pro Token, etwa 0,0015 $ (Flash-Lite) bis 0,0023 $ (Flash) pro 10 Sekunden Sprache, ab 2027 das Doppelte; die Integration stoppt beim Monatsbudget unten. Ein bereits gesprochener Satz wird nicht erneut angefragt. Jeder vorgelesene Text geht an Google.",
+        "es": "Nivel gratuito: nada que pagar, una cuota diaria, y Google puede usar los textos para mejorar sus productos. Nivel de pago: facturado por token, unos 0,0015 $ (Flash-Lite) a 0,0023 $ (Flash) por 10 segundos de voz, el doble a partir de 2027; la integración se detiene en el presupuesto mensual de abajo. Una frase ya pronunciada no se vuelve a pedir. Cada texto leído va a Google."
+      },
+      "links": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "label": {
+            "en": "Pricing",
+            "fr": "Tarifs",
+            "de": "Preise",
+            "es": "Precios"
+          }
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/terms",
+          "label": {
+            "en": "Terms of the Gemini API",
+            "fr": "Conditions de l’API Gemini",
+            "de": "Bedingungen der Gemini API",
+            "es": "Condiciones de la API de Gemini"
+          }
+        }
+      ]
+    },
+    {
+      "key": "api_key",
+      "type": "secret",
+      "label": {
+        "en": "Gemini API key",
+        "fr": "Clé d’API Gemini",
+        "de": "Gemini-API-Schlüssel",
+        "es": "Clave de API de Gemini"
+      },
+      "placeholder": {
+        "en": "AIza…",
+        "fr": "AIza…",
+        "de": "AIza…",
+        "es": "AIza…"
+      },
+      "required": true
+    },
+    {
+      "key": "voice_section",
+      "type": "section",
+      "label": {
+        "en": "Voice",
+        "fr": "Voix",
+        "de": "Stimme",
+        "es": "Voz"
+      },
+      "description": {
+        "en": "Every voice speaks every language. Listen to them in Google AI Studio (link above).",
+        "fr": "Chaque voix parle toutes les langues. Écoutez-les dans Google AI Studio (lien plus haut).",
+        "de": "Jede Stimme spricht jede Sprache. Hör sie dir in Google AI Studio an (Link oben).",
+        "es": "Cada voz habla todos los idiomas. Escúchelas en Google AI Studio (enlace de arriba)."
+      }
+    },
+    {
+      "key": "model",
+      "type": "select",
+      "label": {
+        "en": "Model",
+        "fr": "Modèle",
+        "de": "Modell",
+        "es": "Modelo"
+      },
+      "options": [
+        {
+          "value": "gemini-3.8-flash-lite-tts",
+          "label": {
+            "en": "Gemini 3.8 Flash-Lite TTS: fast, cheaper",
+            "fr": "Gemini 3.8 Flash-Lite TTS : rapide, moins cher",
+            "de": "Gemini 3.8 Flash-Lite TTS: schnell, günstiger",
+            "es": "Gemini 3.8 Flash-Lite TTS: rápido, más barato"
+          }
+        },
+        {
+          "value": "gemini-3.8-flash-tts",
+          "label": {
+            "en": "Gemini 3.8 Flash TTS: most expressive",
+            "fr": "Gemini 3.8 Flash TTS : le plus expressif",
+            "de": "Gemini 3.8 Flash TTS: am ausdrucksstärksten",
+            "es": "Gemini 3.8 Flash TTS: el más expresivo"
+          }
+        }
+      ],
+      "default": "gemini-3.8-flash-lite-tts"
+    },
+    {
+      "key": "voice",
+      "type": "select",
+      "label": {
+        "en": "Voice",
+        "fr": "Voix",
+        "de": "Stimme",
+        "es": "Voz"
+      },
+      "options": [
+        {
+          "value": "Zephyr",
+          "label": {
+            "en": "Zephyr (bright)",
+            "fr": "Zephyr (lumineuse)",
+            "de": "Zephyr (hell)",
+            "es": "Zephyr (luminosa)"
+          }
+        },
+        {
+          "value": "Puck",
+          "label": {
+            "en": "Puck (upbeat)",
+            "fr": "Puck (enjouée)",
+            "de": "Puck (beschwingt)",
+            "es": "Puck (animada)"
+          }
+        },
+        {
+          "value": "Charon",
+          "label": {
+            "en": "Charon (informative)",
+            "fr": "Charon (informative)",
+            "de": "Charon (informativ)",
+            "es": "Charon (informativa)"
+          }
+        },
+        {
+          "value": "Kore",
+          "label": {
+            "en": "Kore (firm)",
+            "fr": "Kore (ferme)",
+            "de": "Kore (bestimmt)",
+            "es": "Kore (firme)"
+          }
+        },
+        {
+          "value": "Fenrir",
+          "label": {
+            "en": "Fenrir (excitable)",
+            "fr": "Fenrir (vive)",
+            "de": "Fenrir (aufgeregt)",
+            "es": "Fenrir (excitable)"
+          }
+        },
+        {
+          "value": "Leda",
+          "label": {
+            "en": "Leda (youthful)",
+            "fr": "Leda (jeune)",
+            "de": "Leda (jugendlich)",
+            "es": "Leda (juvenil)"
+          }
+        },
+        {
+          "value": "Orus",
+          "label": {
+            "en": "Orus (firm)",
+            "fr": "Orus (ferme)",
+            "de": "Orus (bestimmt)",
+            "es": "Orus (firme)"
+          }
+        },
+        {
+          "value": "Aoede",
+          "label": {
+            "en": "Aoede (breezy)",
+            "fr": "Aoede (légère)",
+            "de": "Aoede (locker)",
+            "es": "Aoede (desenfadada)"
+          }
+        },
+        {
+          "value": "Callirrhoe",
+          "label": {
+            "en": "Callirrhoe (easy-going)",
+            "fr": "Callirrhoe (décontractée)",
+            "de": "Callirrhoe (gelassen)",
+            "es": "Callirrhoe (tranquila)"
+          }
+        },
+        {
+          "value": "Autonoe",
+          "label": {
+            "en": "Autonoe (bright)",
+            "fr": "Autonoe (lumineuse)",
+            "de": "Autonoe (hell)",
+            "es": "Autonoe (luminosa)"
+          }
+        },
+        {
+          "value": "Enceladus",
+          "label": {
+            "en": "Enceladus (breathy)",
+            "fr": "Enceladus (soufflée)",
+            "de": "Enceladus (hauchig)",
+            "es": "Enceladus (susurrante)"
+          }
+        },
+        {
+          "value": "Iapetus",
+          "label": {
+            "en": "Iapetus (clear)",
+            "fr": "Iapetus (claire)",
+            "de": "Iapetus (klar)",
+            "es": "Iapetus (clara)"
+          }
+        },
+        {
+          "value": "Umbriel",
+          "label": {
+            "en": "Umbriel (easy-going)",
+            "fr": "Umbriel (décontractée)",
+            "de": "Umbriel (gelassen)",
+            "es": "Umbriel (tranquila)"
+          }
+        },
+        {
+          "value": "Algieba",
+          "label": {
+            "en": "Algieba (smooth)",
+            "fr": "Algieba (douce)",
+            "de": "Algieba (sanft)",
+            "es": "Algieba (suave)"
+          }
+        },
+        {
+          "value": "Despina",
+          "label": {
+            "en": "Despina (smooth)",
+            "fr": "Despina (douce)",
+            "de": "Despina (sanft)",
+            "es": "Despina (suave)"
+          }
+        },
+        {
+          "value": "Erinome",
+          "label": {
+            "en": "Erinome (clear)",
+            "fr": "Erinome (claire)",
+            "de": "Erinome (klar)",
+            "es": "Erinome (clara)"
+          }
+        },
+        {
+          "value": "Algenib",
+          "label": {
+            "en": "Algenib (gravelly)",
+            "fr": "Algenib (rocailleuse)",
+            "de": "Algenib (rau)",
+            "es": "Algenib (ronca)"
+          }
+        },
+        {
+          "value": "Rasalgethi",
+          "label": {
+            "en": "Rasalgethi (informative)",
+            "fr": "Rasalgethi (informative)",
+            "de": "Rasalgethi (informativ)",
+            "es": "Rasalgethi (informativa)"
+          }
+        },
+        {
+          "value": "Laomedeia",
+          "label": {
+            "en": "Laomedeia (upbeat)",
+            "fr": "Laomedeia (enjouée)",
+            "de": "Laomedeia (beschwingt)",
+            "es": "Laomedeia (animada)"
+          }
+        },
+        {
+          "value": "Achernar",
+          "label": {
+            "en": "Achernar (soft)",
+            "fr": "Achernar (tendre)",
+            "de": "Achernar (weich)",
+            "es": "Achernar (suave)"
+          }
+        },
+        {
+          "value": "Alnilam",
+          "label": {
+            "en": "Alnilam (firm)",
+            "fr": "Alnilam (ferme)",
+            "de": "Alnilam (bestimmt)",
+            "es": "Alnilam (firme)"
+          }
+        },
+        {
+          "value": "Schedar",
+          "label": {
+            "en": "Schedar (even)",
+            "fr": "Schedar (égale)",
+            "de": "Schedar (gleichmäßig)",
+            "es": "Schedar (uniforme)"
+          }
+        },
+        {
+          "value": "Gacrux",
+          "label": {
+            "en": "Gacrux (mature)",
+            "fr": "Gacrux (mûre)",
+            "de": "Gacrux (reif)",
+            "es": "Gacrux (madura)"
+          }
+        },
+        {
+          "value": "Pulcherrima",
+          "label": {
+            "en": "Pulcherrima (forward)",
+            "fr": "Pulcherrima (directe)",
+            "de": "Pulcherrima (direkt)",
+            "es": "Pulcherrima (directa)"
+          }
+        },
+        {
+          "value": "Achird",
+          "label": {
+            "en": "Achird (friendly)",
+            "fr": "Achird (amicale)",
+            "de": "Achird (freundlich)",
+            "es": "Achird (amable)"
+          }
+        },
+        {
+          "value": "Zubenelgenubi",
+          "label": {
+            "en": "Zubenelgenubi (casual)",
+            "fr": "Zubenelgenubi (détendue)",
+            "de": "Zubenelgenubi (lässig)",
+            "es": "Zubenelgenubi (informal)"
+          }
+        },
+        {
+          "value": "Vindemiatrix",
+          "label": {
+            "en": "Vindemiatrix (gentle)",
+            "fr": "Vindemiatrix (délicate)",
+            "de": "Vindemiatrix (behutsam)",
+            "es": "Vindemiatrix (delicada)"
+          }
+        },
+        {
+          "value": "Sadachbia",
+          "label": {
+            "en": "Sadachbia (lively)",
+            "fr": "Sadachbia (enjouée)",
+            "de": "Sadachbia (lebhaft)",
+            "es": "Sadachbia (vivaz)"
+          }
+        },
+        {
+          "value": "Sadaltager",
+          "label": {
+            "en": "Sadaltager (knowledgeable)",
+            "fr": "Sadaltager (savante)",
+            "de": "Sadaltager (kundig)",
+            "es": "Sadaltager (erudita)"
+          }
+        },
+        {
+          "value": "Sulafat",
+          "label": {
+            "en": "Sulafat (warm)",
+            "fr": "Sulafat (chaleureuse)",
+            "de": "Sulafat (warm)",
+            "es": "Sulafat (cálida)"
+          }
+        }
+      ],
+      "default": "Kore"
+    },
+    {
+      "key": "custom_voice",
+      "type": "string",
+      "label": {
+        "en": "Other voice (optional)",
+        "fr": "Autre voix (facultatif)",
+        "de": "Andere Stimme (optional)",
+        "es": "Otra voz (opcional)"
+      },
+      "description": {
+        "en": "Replaces the voice above: a voice of the Extended Voice Library (“List the voices” button), or the id of a voice designed in Google AI Studio (voice_…).",
+        "fr": "Remplace la voix ci-dessus : une voix de la bibliothèque étendue (bouton « Lister les voix »), ou l’identifiant d’une voix conçue dans Google AI Studio (voice_…).",
+        "de": "Ersetzt die Stimme oben: eine Stimme der erweiterten Bibliothek (Schaltfläche „Stimmen auflisten“) oder die ID einer in Google AI Studio entworfenen Stimme (voice_…).",
+        "es": "Sustituye la voz de arriba: una voz de la biblioteca ampliada (botón «Listar las voces»), o el identificador de una voz diseñada en Google AI Studio (voice_…)."
+      },
+      "placeholder": {
+        "en": "voice_…",
+        "fr": "voice_…",
+        "de": "voice_…",
+        "es": "voice_…"
+      },
+      "required": false,
+      "default": ""
+    },
+    {
+      "key": "style",
+      "type": "string",
+      "label": {
+        "en": "Speaking style (optional)",
+        "fr": "Façon de parler (facultatif)",
+        "de": "Sprechweise (optional)",
+        "es": "Forma de hablar (opcional)"
+      },
+      "description": {
+        "en": "A few words, in English for best results: “calm and warm”, “cheerful, speaking slowly”. Applies to every clip. A scene text may also hold vocal tags such as <laugh>, <sigh> or <short pause>.",
+        "fr": "Quelques mots, de préférence en anglais : « calm and warm », « cheerful, speaking slowly ». S’applique à chaque clip. Le texte d’une scène peut aussi contenir des balises vocales comme <laugh>, <sigh> ou <short pause>.",
+        "de": "Ein paar Wörter, am besten auf Englisch: „calm and warm“, „cheerful, speaking slowly“. Gilt für jeden Clip. Der Text einer Szene darf auch Stimm-Tags wie <laugh>, <sigh> oder <short pause> enthalten.",
+        "es": "Unas palabras, mejor en inglés: «calm and warm», «cheerful, speaking slowly». Se aplica a cada clip. El texto de una escena también puede contener etiquetas vocales como <laugh>, <sigh> o <short pause>."
+      },
+      "placeholder": {
+        "en": "calm and warm",
+        "fr": "calm and warm",
+        "de": "calm and warm",
+        "es": "calm and warm"
+      },
+      "required": false,
+      "default": ""
+    },
+    {
+      "key": "sample_rate",
+      "type": "select",
+      "label": {
+        "en": "Audio quality",
+        "fr": "Qualité audio",
+        "de": "Audioqualität",
+        "es": "Calidad de audio"
+      },
+      "description": {
+        "en": "WAV clips. A clip over the 5 MB Gladys accepts (about 100 seconds at 24 kHz) is brought down to 16 kHz.",
+        "fr": "Clips WAV. Un clip au-delà des 5 Mo acceptés par Gladys (environ 100 secondes à 24 kHz) est ramené à 16 kHz.",
+        "de": "WAV-Clips. Ein Clip über den 5 MB, die Gladys annimmt (etwa 100 Sekunden bei 24 kHz), wird auf 16 kHz gesenkt.",
+        "es": "Clips WAV. Un clip que supere los 5 MB que acepta Gladys (unos 100 segundos a 24 kHz) se reduce a 16 kHz."
+      },
+      "options": [
+        {
+          "value": "24000",
+          "label": {
+            "en": "24 kHz (best)",
+            "fr": "24 kHz (meilleure)",
+            "de": "24 kHz (beste)",
+            "es": "24 kHz (la mejor)"
+          }
+        },
+        {
+          "value": "16000",
+          "label": {
+            "en": "16 kHz (lighter clips)",
+            "fr": "16 kHz (clips plus légers)",
+            "de": "16 kHz (leichtere Clips)",
+            "es": "16 kHz (clips más ligeros)"
+          }
+        }
+      ],
+      "default": "24000"
+    },
+    {
+      "key": "costs_section",
+      "type": "section",
+      "label": {
+        "en": "Budget",
+        "fr": "Budget",
+        "de": "Budget",
+        "es": "Presupuesto"
+      }
+    },
+    {
+      "key": "tier",
+      "type": "select",
+      "label": {
+        "en": "Tier of the key",
+        "fr": "Offre de la clé",
+        "de": "Stufe des Schlüssels",
+        "es": "Nivel de la clave"
+      },
+      "description": {
+        "en": "The tier of the Google project of the key, as shown in Google AI Studio. On the paid tier, the integration estimates the cost of each clip.",
+        "fr": "L’offre du projet Google de la clé, telle qu’affichée dans Google AI Studio. Sur l’offre payante, l’intégration estime le coût de chaque clip.",
+        "de": "Die Stufe des Google-Projekts des Schlüssels, wie in Google AI Studio angezeigt. Auf der kostenpflichtigen Stufe schätzt die Integration die Kosten jedes Clips.",
+        "es": "El nivel del proyecto de Google de la clave, tal y como aparece en Google AI Studio. En el nivel de pago, la integración estima el coste de cada clip."
+      },
+      "options": [
+        {
+          "value": "free",
+          "label": {
+            "en": "Free",
+            "fr": "Gratuite",
+            "de": "Kostenlos",
+            "es": "Gratuito"
+          }
+        },
+        {
+          "value": "paid",
+          "label": {
+            "en": "Paid",
+            "fr": "Payante",
+            "de": "Kostenpflichtig",
+            "es": "De pago"
+          }
+        }
+      ],
+      "default": "free"
+    },
+    {
+      "key": "monthly_budget",
+      "type": "select",
+      "label": {
+        "en": "Monthly budget (paid tier)",
+        "fr": "Budget mensuel (offre payante)",
+        "de": "Monatsbudget (kostenpflichtig)",
+        "es": "Presupuesto mensual (de pago)"
+      },
+      "description": {
+        "en": "Estimated from the tokens Google reports. Beyond it, clips are refused until the 1st of next month (Pacific time, like Google bills).",
+        "fr": "Estimé d’après les jetons annoncés par Google. Au-delà, les clips sont refusés jusqu’au 1er du mois prochain (heure du Pacifique, comme la facture Google).",
+        "de": "Geschätzt aus den von Google gemeldeten Token. Darüber hinaus werden Clips bis zum 1. des nächsten Monats abgelehnt (pazifische Zeit, wie Google abrechnet).",
+        "es": "Estimado a partir de los tokens que indica Google. Por encima, los clips se rechazan hasta el día 1 del mes que viene (hora del Pacífico, como factura Google)."
+      },
+      "options": [
+        {
+          "value": "0",
+          "label": {
+            "en": "No budget",
+            "fr": "Pas de budget",
+            "de": "Kein Budget",
+            "es": "Sin presupuesto"
+          }
+        },
+        {
+          "value": "0.5",
+          "label": {
+            "en": "$0.5",
+            "fr": "0,5 $",
+            "de": "0,5 $",
+            "es": "0,5 $"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "en": "$1",
+            "fr": "1 $",
+            "de": "1 $",
+            "es": "1 $"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en": "$2",
+            "fr": "2 $",
+            "de": "2 $",
+            "es": "2 $"
+          }
+        },
+        {
+          "value": "5",
+          "label": {
+            "en": "$5",
+            "fr": "5 $",
+            "de": "5 $",
+            "es": "5 $"
+          }
+        },
+        {
+          "value": "10",
+          "label": {
+            "en": "$10",
+            "fr": "10 $",
+            "de": "10 $",
+            "es": "10 $"
+          }
+        },
+        {
+          "value": "20",
+          "label": {
+            "en": "$20",
+            "fr": "20 $",
+            "de": "20 $",
+            "es": "20 $"
+          }
+        },
+        {
+          "value": "50",
+          "label": {
+            "en": "$50",
+            "fr": "50 $",
+            "de": "50 $",
+            "es": "50 $"
+          }
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_voice",
+      "timeout_seconds": 40,
+      "label": {
+        "en": "Test the voice",
+        "fr": "Tester la voix",
+        "de": "Stimme testen",
+        "es": "Probar la voz"
+      },
+      "description": {
+        "en": "Speaks a short sentence with the chosen voice and shows the time, the length of the clip and the month so far. Uses one request of the quota.",
+        "fr": "Fait prononcer une courte phrase à la voix choisie et affiche le temps, la durée du clip et le bilan du mois. Consomme une requête du quota.",
+        "de": "Lässt die gewählte Stimme einen kurzen Satz sprechen und zeigt Dauer, Länge des Clips und den bisherigen Monat an. Verbraucht eine Anfrage des Kontingents.",
+        "es": "Hace pronunciar una frase corta a la voz elegida y muestra el tiempo, la duración del clip y el balance del mes. Consume una solicitud de la cuota."
+      },
+      "fields": [
+        {
+          "key": "language",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Language",
+            "fr": "Langue",
+            "de": "Sprache",
+            "es": "Idioma"
+          },
+          "options": [
+            {
+              "value": "en",
+              "label": {
+                "en": "English",
+                "fr": "Anglais",
+                "de": "Englisch",
+                "es": "Inglés"
+              }
+            },
+            {
+              "value": "fr",
+              "label": {
+                "en": "French",
+                "fr": "Français",
+                "de": "Französisch",
+                "es": "Francés"
+              }
+            },
+            {
+              "value": "de",
+              "label": {
+                "en": "German",
+                "fr": "Allemand",
+                "de": "Deutsch",
+                "es": "Alemán"
+              }
+            },
+            {
+              "value": "es",
+              "label": {
+                "en": "Spanish",
+                "fr": "Espagnol",
+                "de": "Spanisch",
+                "es": "Español"
+              }
+            },
+            {
+              "value": "it",
+              "label": {
+                "en": "Italian",
+                "fr": "Italien",
+                "de": "Italienisch",
+                "es": "Italiano"
+              }
+            },
+            {
+              "value": "nl",
+              "label": {
+                "en": "Dutch",
+                "fr": "Néerlandais",
+                "de": "Niederländisch",
+                "es": "Neerlandés"
+              }
+            },
+            {
+              "value": "pt",
+              "label": {
+                "en": "Portuguese",
+                "fr": "Portugais",
+                "de": "Portugiesisch",
+                "es": "Portugués"
+              }
+            }
+          ]
+        },
+        {
+          "key": "text",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Text (optional)",
+            "fr": "Texte (facultatif)",
+            "de": "Text (optional)",
+            "es": "Texto (opcional)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "list_voices",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "List the voices",
+        "fr": "Lister les voix",
+        "de": "Stimmen auflisten",
+        "es": "Listar las voces"
+      },
+      "description": {
+        "en": "Your custom voices, then the voices of the Extended Voice Library marked for a language, to type one in “Other voice”. Free.",
+        "fr": "Vos voix personnalisées, puis les voix de la bibliothèque étendue marquées pour une langue, pour en saisir une dans « Autre voix ». Gratuit.",
+        "de": "Deine eigenen Stimmen, dann die Stimmen der erweiterten Bibliothek für eine Sprache, um eine unter „Andere Stimme“ einzugeben. Kostenlos.",
+        "es": "Sus voces personalizadas, y luego las voces de la biblioteca ampliada marcadas para un idioma, para escribir una en «Otra voz». Gratis."
+      },
+      "fields": [
+        {
+          "key": "language",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Language",
+            "fr": "Langue",
+            "de": "Sprache",
+            "es": "Idioma"
+          },
+          "options": [
+            {
+              "value": "en",
+              "label": {
+                "en": "English",
+                "fr": "Anglais",
+                "de": "Englisch",
+                "es": "Inglés"
+              }
+            },
+            {
+              "value": "fr",
+              "label": {
+                "en": "French",
+                "fr": "Français",
+                "de": "Französisch",
+                "es": "Francés"
+              }
+            },
+            {
+              "value": "de",
+              "label": {
+                "en": "German",
+                "fr": "Allemand",
+                "de": "Deutsch",
+                "es": "Alemán"
+              }
+            },
+            {
+              "value": "es",
+              "label": {
+                "en": "Spanish",
+                "fr": "Espagnol",
+                "de": "Spanisch",
+                "es": "Español"
+              }
+            },
+            {
+              "value": "it",
+              "label": {
+                "en": "Italian",
+                "fr": "Italien",
+                "de": "Italienisch",
+                "es": "Italiano"
+              }
+            },
+            {
+              "value": "nl",
+              "label": {
+                "en": "Dutch",
+                "fr": "Néerlandais",
+                "de": "Niederländisch",
+                "es": "Neerlandés"
+              }
+            },
+            {
+              "value": "pt",
+              "label": {
+                "en": "Portuguese",
+                "fr": "Portugais",
+                "de": "Portugiesisch",
+                "es": "Portugués"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "clear_cache",
+      "timeout_seconds": 15,
+      "label": {
+        "en": "Empty the clip cache",
+        "fr": "Vider le cache des clips",
+        "de": "Clip-Cache leeren",
+        "es": "Vaciar la caché de clips"
+      },
+      "description": {
+        "en": "Sentences already spoken are kept (300 at most) so they are not asked again. Empty it to hear a sentence spoken anew.",
+        "fr": "Les phrases déjà prononcées sont gardées (300 au plus) pour ne pas être redemandées. Videz-le pour réentendre une phrase prononcée à nouveau.",
+        "de": "Bereits gesprochene Sätze werden aufbewahrt (höchstens 300), damit sie nicht erneut angefragt werden. Leere ihn, um einen Satz neu sprechen zu lassen.",
+        "es": "Las frases ya pronunciadas se guardan (300 como máximo) para no volver a pedirlas. Vacíela para oír una frase pronunciada de nuevo."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "usage",
+      "icon": "volume-2",
+      "label": {
+        "en": "Gemini voice",
+        "fr": "Voix Gemini",
+        "de": "Gemini-Stimme",
+        "es": "Voz de Gemini"
+      },
+      "description": {
+        "en": "Spending or audio of the month, clips of the day, the cache and the last error.",
+        "fr": "Dépense ou audio du mois, clips du jour, le cache et la dernière erreur.",
+        "de": "Ausgaben oder Audio des Monats, Clips des Tages, der Cache und der letzte Fehler.",
+        "es": "Gasto o audio del mes, clips del día, la caché y el último error."
+      }
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "error",
+      "label": {
+        "en": "Gemini voice: speech fails",
+        "fr": "Voix Gemini : la parole est en erreur",
+        "de": "Gemini-Stimme: Sprachausgabe schlägt fehl",
+        "es": "Voz de Gemini: el habla falla"
+      },
+      "description": {
+        "en": "Gemini stopped speaking: key refused, credit used up, daily quota reached, voice or model unknown, API unreachable. Once per failure, not for every clip.",
+        "fr": "Gemini ne parle plus : clé refusée, crédit épuisé, quota du jour atteint, voix ou modèle inconnu, API injoignable. Une fois par panne, pas à chaque clip.",
+        "de": "Gemini spricht nicht mehr: Schlüssel abgelehnt, Guthaben aufgebraucht, Tageskontingent erreicht, Stimme oder Modell unbekannt, API nicht erreichbar. Einmal pro Ausfall, nicht bei jedem Clip.",
+        "es": "Gemini ya no habla: clave rechazada, crédito agotado, cuota diaria alcanzada, voz o modelo desconocido, API inaccesible. Una vez por fallo, no en cada clip."
+      },
+      "fields": [
+        {
+          "key": "kind",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Only for",
+            "fr": "Seulement pour",
+            "de": "Nur bei",
+            "es": "Solo para"
+          },
+          "description": {
+            "en": "Leave empty for any failure.",
+            "fr": "Laissez vide pour toute panne.",
+            "de": "Leer lassen für jeden Ausfall.",
+            "es": "Déjelo vacío para cualquier fallo."
+          },
+          "options": [
+            {
+              "value": "auth",
+              "label": {
+                "en": "Key refused",
+                "fr": "Clé refusée",
+                "de": "Schlüssel abgelehnt",
+                "es": "Clave rechazada"
+              }
+            },
+            {
+              "value": "disabled",
+              "label": {
+                "en": "API not enabled",
+                "fr": "API non activée",
+                "de": "API nicht aktiviert",
+                "es": "API no habilitada"
+              }
+            },
+            {
+              "value": "billing",
+              "label": {
+                "en": "Billing or credit",
+                "fr": "Facturation ou crédit",
+                "de": "Abrechnung oder Guthaben",
+                "es": "Facturación o crédito"
+              }
+            },
+            {
+              "value": "quota",
+              "label": {
+                "en": "Daily quota",
+                "fr": "Quota du jour",
+                "de": "Tageskontingent",
+                "es": "Cuota diaria"
+              }
+            },
+            {
+              "value": "rate_limit",
+              "label": {
+                "en": "Rate limit",
+                "fr": "Limite de requêtes",
+                "de": "Anfragelimit",
+                "es": "Límite de solicitudes"
+              }
+            },
+            {
+              "value": "model",
+              "label": {
+                "en": "Model unknown",
+                "fr": "Modèle inconnu",
+                "de": "Modell unbekannt",
+                "es": "Modelo desconocido"
+              }
+            },
+            {
+              "value": "voice",
+              "label": {
+                "en": "Voice unknown",
+                "fr": "Voix inconnue",
+                "de": "Stimme unbekannt",
+                "es": "Voz desconocida"
+              }
+            },
+            {
+              "value": "unreachable",
+              "label": {
+                "en": "API unreachable",
+                "fr": "API injoignable",
+                "de": "API nicht erreichbar",
+                "es": "API inaccesible"
+              }
+            },
+            {
+              "value": "timeout",
+              "label": {
+                "en": "Too slow",
+                "fr": "Trop lent",
+                "de": "Zu langsam",
+                "es": "Demasiado lento"
+              }
+            },
+            {
+              "value": "server",
+              "label": {
+                "en": "Google error",
+                "fr": "Erreur Google",
+                "de": "Google-Fehler",
+                "es": "Error de Google"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind of failure",
+            "fr": "Type de panne",
+            "de": "Art des Ausfalls",
+            "es": "Tipo de fallo"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Error message",
+            "fr": "Message d’erreur",
+            "de": "Fehlermeldung",
+            "es": "Mensaje de error"
+          }
+        },
+        {
+          "key": "voice",
+          "type": "string",
+          "label": {
+            "en": "Voice",
+            "fr": "Voix",
+            "de": "Stimme",
+            "es": "Voz"
+          }
+        },
+        {
+          "key": "language",
+          "type": "string",
+          "label": {
+            "en": "Language",
+            "fr": "Langue",
+            "de": "Sprache",
+            "es": "Idioma"
+          }
+        }
+      ]
+    },
+    {
+      "key": "recovered",
+      "label": {
+        "en": "Gemini voice: speaks again",
+        "fr": "Voix Gemini : parle de nouveau",
+        "de": "Gemini-Stimme: spricht wieder",
+        "es": "Voz de Gemini: vuelve a hablar"
+      },
+      "description": {
+        "en": "The first clip after a failure.",
+        "fr": "Le premier clip après une panne.",
+        "de": "Der erste Clip nach einem Ausfall.",
+        "es": "El primer clip tras un fallo."
+      },
+      "variables": [
+        {
+          "key": "down_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes of failure",
+            "fr": "Minutes de panne",
+            "de": "Minuten des Ausfalls",
+            "es": "Minutos de fallo"
+          }
+        }
+      ]
+    },
+    {
+      "key": "monthly_limit",
+      "label": {
+        "en": "Gemini voice: monthly budget",
+        "fr": "Voix Gemini : budget du mois",
+        "de": "Gemini-Stimme: Monatsbudget",
+        "es": "Voz de Gemini: presupuesto del mes"
+      },
+      "description": {
+        "en": "Paid tier: the estimated spending of the month reaches 80 % of the budget, then the budget itself (clips refused until the next month). Once per level and month.",
+        "fr": "Offre payante : la dépense estimée du mois atteint 80 % du budget, puis le budget lui-même (clips refusés jusqu’au mois suivant). Une fois par niveau et par mois.",
+        "de": "Kostenpflichtige Stufe: Die geschätzten Ausgaben des Monats erreichen 80 % des Budgets, dann das Budget selbst (Clips bis zum nächsten Monat abgelehnt). Einmal pro Stufe und Monat.",
+        "es": "Nivel de pago: el gasto estimado del mes alcanza el 80 % del presupuesto, y luego el propio presupuesto (clips rechazados hasta el mes siguiente). Una vez por nivel y mes."
+      },
+      "fields": [
+        {
+          "key": "level",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Only for",
+            "fr": "Seulement pour",
+            "de": "Nur bei",
+            "es": "Solo para"
+          },
+          "description": {
+            "en": "Leave empty for both.",
+            "fr": "Laissez vide pour les deux.",
+            "de": "Leer lassen für beide.",
+            "es": "Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "warning",
+              "label": {
+                "en": "80 % of the budget",
+                "fr": "80 % du budget",
+                "de": "80 % des Budgets",
+                "es": "80 % del presupuesto"
+              }
+            },
+            {
+              "value": "reached",
+              "label": {
+                "en": "Budget reached",
+                "fr": "Budget atteint",
+                "de": "Budget erreicht",
+                "es": "Presupuesto alcanzado"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "level",
+          "type": "string",
+          "label": {
+            "en": "Level",
+            "fr": "Niveau",
+            "de": "Stufe",
+            "es": "Nivel"
+          }
+        },
+        {
+          "key": "used",
+          "type": "number",
+          "label": {
+            "en": "Spent (US dollars, estimated)",
+            "fr": "Dépensé (dollars US, estimé)",
+            "de": "Ausgegeben (US-Dollar, geschätzt)",
+            "es": "Gastado (dólares EE. UU., estimado)"
+          }
+        },
+        {
+          "key": "limit",
+          "type": "number",
+          "label": {
+            "en": "Budget (US dollars)",
+            "fr": "Budget (dollars US)",
+            "de": "Budget (US-Dollar)",
+            "es": "Presupuesto (dólares EE. UU.)"
+          }
+        },
+        {
+          "key": "percent",
+          "type": "number",
+          "label": {
+            "en": "Percentage used",
+            "fr": "Pourcentage utilisé",
+            "de": "Verbrauchter Anteil",
+            "es": "Porcentaje usado"
+          }
+        },
+        {
+          "key": "month",
+          "type": "string",
+          "label": {
+            "en": "Month",
+            "fr": "Mois",
+            "de": "Monat",
+            "es": "Mes"
+          }
+        }
+      ]
+    }
+  ]
+}
